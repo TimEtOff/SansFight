@@ -28,8 +28,15 @@ public class Animations {
     }
 
     public static class SANS_HEAD { // TODO
+        public static final String DEFAULT = "Default";
         public static final String BLUE_EYE = "BlueEye";
         public static final String CLOSED_EYES = "ClosedEyes";
+        public static final String LOOK_LEFT = "LookLeft";
+        public static final String NO_EYES = "NoEyes";
+        public static final String TIRED1 = "Tired1";
+        public static final String TIRED2 = "Tired2";
+        public static final String WINK = "Wink";
+
     }
 
     public static void returnSansComponentsToOriginalPlace() {
@@ -76,19 +83,19 @@ public class Animations {
         }
     }
 
-    public static void sansBody(String bodyAnim, boolean withComponentsReturn) {
+    public static void sansBody(String animationName, boolean withComponentsReturn) {
         Thread t = new Thread(() -> {
             // soundTest();
-            if (bodyAnim == SANS_BODY.HAND_UP) {
+            if (animationName == SANS_BODY.HAND_UP) {
                 sansBody.setBounds(276, 101, 64, 70);
                 sansBody.setVisible(true);
-                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + bodyAnim + "/000.png")));
+                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + animationName + "/000.png")));
                 try {
                     Thread.sleep(50);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + bodyAnim + "/001.png")));
+                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + animationName + "/001.png")));
                 sansHead.setBounds(290, 100, 32, 30);
                 sansSweat.setBounds(290, 100, 32, 9);
                 try {
@@ -96,7 +103,7 @@ public class Animations {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + bodyAnim + "/002.png")));
+                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + animationName + "/002.png")));
                 sansHead.setBounds(290, 98, 32, 30);
                 sansSweat.setBounds(290, 98, 32, 9);
                 try {
@@ -104,7 +111,7 @@ public class Animations {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + bodyAnim + "/003.png")));
+                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + animationName + "/003.png")));
                 sansHead.setBounds(290, 97, 32, 30);
                 sansSweat.setBounds(290, 97, 32, 9);
                 try {
@@ -112,27 +119,27 @@ public class Animations {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + bodyAnim + "/004.png")));
+                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + animationName + "/004.png")));
                 sansHead.setBounds(290, 98, 32, 30);
                 sansSweat.setBounds(290, 98, 32, 9);
             }
 
-            else if (bodyAnim == SANS_BODY.HAND_DOWN) {
+            else if (animationName == SANS_BODY.HAND_DOWN) {
                 sansBody.setBounds(276, 101, 64, 70);
                 sansBody.setVisible(true);
-                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + bodyAnim + "/000.png")));
+                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + animationName + "/000.png")));
                 try {
                     Thread.sleep(50);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + bodyAnim + "/001.png")));
+                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + animationName + "/001.png")));
                 try {
                     Thread.sleep(50);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + bodyAnim + "/002.png")));
+                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + animationName + "/002.png")));
                 sansHead.setBounds(290, 100, 32, 30);
                 sansSweat.setBounds(290, 100, 32, 9);
                 try {
@@ -140,15 +147,15 @@ public class Animations {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + bodyAnim + "/003.png")));
+                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + animationName + "/003.png")));
                 sansHead.setBounds(290, 101, 32, 30);
                 sansSweat.setBounds(290, 101, 32, 9);
             }
 
-            else if (bodyAnim == SANS_BODY.HAND_LEFT) {
+            else if (animationName == SANS_BODY.HAND_LEFT) {
                 sansBody.setBounds(273, 123, 96, 48);
                 sansBody.setVisible(true);
-                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + bodyAnim + "/000.png")));
+                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + animationName + "/000.png")));
                 sansHead.setBounds(291, 99, 32, 30);
                 sansSweat.setBounds(291, 99, 32, 9);
                 try {
@@ -156,7 +163,7 @@ public class Animations {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + bodyAnim + "/001.png")));
+                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + animationName + "/001.png")));
                 sansHead.setBounds(288, 99, 32, 30);
                 sansSweat.setBounds(288, 99, 32, 9);
                 try {
@@ -164,7 +171,7 @@ public class Animations {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + bodyAnim + "/002.png")));
+                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + animationName + "/002.png")));
                 sansHead.setBounds(286, 99, 32, 30);
                 sansSweat.setBounds(286, 99, 32, 9);
                 try {
@@ -172,7 +179,7 @@ public class Animations {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + bodyAnim + "/003.png")));
+                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + animationName + "/003.png")));
                 sansHead.setBounds(289, 99, 32, 30);
                 sansSweat.setBounds(289, 99, 32, 9);
                 try {
@@ -180,15 +187,15 @@ public class Animations {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + bodyAnim + "/004.png")));
+                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + animationName + "/004.png")));
                 sansHead.setBounds(290, 99, 32, 30);
                 sansSweat.setBounds(290, 99, 32, 9);
             }
 
-            else if (bodyAnim == SANS_BODY.HAND_RIGHT) {
+            else if (animationName == SANS_BODY.HAND_RIGHT) {
                 sansBody.setBounds(273, 123, 96, 48);
                 sansBody.setVisible(true);
-                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + bodyAnim + "/000.png")));
+                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + animationName + "/000.png")));
                 sansHead.setBounds(290, 99, 32, 30);
                 sansSweat.setBounds(290, 99, 32, 9);
                 try {
@@ -196,7 +203,7 @@ public class Animations {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + bodyAnim + "/001.png")));
+                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + animationName + "/001.png")));
                 sansHead.setBounds(289, 99, 32, 30);
                 sansSweat.setBounds(289, 99, 32, 9);
                 try {
@@ -204,7 +211,7 @@ public class Animations {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + bodyAnim + "/002.png")));
+                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + animationName + "/002.png")));
                 sansHead.setBounds(286, 99, 32, 30);
                 sansSweat.setBounds(286, 99, 32, 9);
                 try {
@@ -212,7 +219,7 @@ public class Animations {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + bodyAnim + "/003.png")));
+                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + animationName + "/003.png")));
                 sansHead.setBounds(288, 99, 32, 30);
                 sansSweat.setBounds(288, 99, 32, 9);
                 try {
@@ -220,7 +227,7 @@ public class Animations {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + bodyAnim + "/004.png")));
+                sansBody.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/" + animationName + "/004.png")));
                 sansHead.setBounds(291, 99, 32, 30);
                 sansSweat.setBounds(291, 99, 32, 9);
             }
@@ -237,7 +244,37 @@ public class Animations {
 
     }
 
-    public static void sansHead(String headAnim) {
+    private static boolean sansHeadInAnimation = false;
+
+    public static void sansHead(String animationName) {
+        Thread t = new Thread(() -> {
+            sansHeadInAnimation = false;
+            sansHead.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansHead/" + animationName + "/000.png")));
+            if (animationName == SANS_HEAD.BLUE_EYE) {
+                sansHeadInAnimation = true;
+                while (sansHeadInAnimation) {
+                    sansHead.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansHead/" + animationName + "/000.png")));
+                    try {
+                        Thread.sleep(250);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                    sansHead.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansHead/" + animationName + "/001.png")));
+                    try {
+                        Thread.sleep(250);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                    if (!frame.isActive()) {
+                        sansHeadInAnimation = false;
+                    }
+                }
+
+            } else {
+                sansHead.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansHead/" + animationName + "/000.png")));
+            }
+        });
+        t.start();
 
     }
 

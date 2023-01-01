@@ -354,6 +354,7 @@ public class Game extends JPanel implements KeyListener , SwingerEventListener {
                     throw new RuntimeException(ex);
                 }
                 sansSweat.setVisible(false);
+                Animations.sansHead(Animations.SANS_HEAD.WINK);
 
             });
             t.start();
@@ -377,12 +378,15 @@ public class Game extends JPanel implements KeyListener , SwingerEventListener {
                 sansHead.setBounds(290, 99, 32, 30);
                 sansSweat.setBounds(290, 99, 32, 9);
                 sansBody.setVisible(false);
+                Animations.sansHead(Animations.SANS_HEAD.BLUE_EYE);
             });
             t.start();
         } else if (e.getSource() == uiItemsButton) {
             heal(50, "Your mother");
+            Animations.sansHead(Animations.SANS_HEAD.TIRED1);
         } else if (e.getSource() == uiMercyButton) {
             sansDialogue("I'm the baaaaad tiiime... Da tulu tululululu");
+            Animations.sansHead(Animations.SANS_HEAD.LOOK_LEFT);
         }
 
     }
