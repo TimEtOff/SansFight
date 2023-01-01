@@ -27,7 +27,7 @@ public class Animations {
 
     }
 
-    public static class SANS_HEAD {
+    public static class SANS_HEAD { // TODO
         public static final String BLUE_EYE = "BlueEye";
         public static final String CLOSED_EYES = "ClosedEyes";
     }
@@ -238,6 +238,34 @@ public class Animations {
     }
 
     public static void sansHead(String headAnim) {
+
+    }
+
+    public static void sansDialogue(String text) {
+        String message1;
+        String message2;
+        String message3;
+        try {
+            message1 = text.substring(0, 26);
+            try {
+                message2 = text.substring(26, 50);
+                try {
+                    message3 = text.substring(50);
+                } catch (Exception e) {
+                    message3 = "";
+                }
+            } catch (Exception e) {
+                message2 = text.substring(26);
+                message3 = "";
+            }
+        } catch (Exception e) {
+            message1 = text;
+            message2 = "";
+            message3 = "";
+        }
+        sansSpeechBubble.setVisible(true);
+        sansSpeechTextArea.setVisible(true);
+        sansSpeechTextArea.setText(message1 + System.getProperty("line.separator") + message2 + System.getProperty("line.separator") + message3);
 
     }
 }

@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Objects;
 
+import static fr.timeto.sansfight.Animations.sansDialogue;
 import static fr.timeto.sansfight.Heart.*;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
@@ -44,6 +45,8 @@ public class Game extends JPanel implements KeyListener , SwingerEventListener {
     public static JLabel sansHead = new JLabel(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansHead/Default/000.png")), SwingConstants.CENTER);
     public static JLabel sansTorso = new JLabel(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansTorso/Default/000.png")), SwingConstants.CENTER);
     public static JLabel sansLegs = new JLabel(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansLegs/Standing/000.png")), SwingConstants.CENTER);
+    public static JLabel sansSpeechBubble = new JLabel(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SpeechBubble/Default/000.png")), SwingConstants.CENTER);
+    public static JTextArea sansSpeechTextArea = new JTextArea(10, 5);
 
     public static void launch(String[] args) {
         playerName = "Chara";
@@ -143,6 +146,17 @@ public class Game extends JPanel implements KeyListener , SwingerEventListener {
         lifeLabel.setOpaque(false);
         this.add(lifeLabel);
         lifeLabel.setVisible(false);
+
+        sansSpeechTextArea.setBounds(373, 88, 230, 100);
+        sansSpeechTextArea.setFont(undertaleSansFont.deriveFont(18f));
+        sansSpeechTextArea.setForeground(Color.BLACK);
+        sansSpeechTextArea.setOpaque(false);
+        this.add(sansSpeechTextArea);
+        sansSpeechTextArea.setVisible(false);
+
+        sansSpeechBubble.setBounds(340, 77, 237, 104);
+        this.add(sansSpeechBubble);
+        sansSpeechBubble.setVisible(false);
 
         sansSweat.setBounds(290, 99, 32, 9);
         this.add(sansSweat);
@@ -367,6 +381,8 @@ public class Game extends JPanel implements KeyListener , SwingerEventListener {
             t.start();
         } else if (e.getSource() == uiItemsButton) {
             heal(50, "Your mother");
+        } else if (e.getSource() == uiMercyButton) {
+            sansDialogue("I'm the baaaaad tiiime... Da tulu tululululu");
         }
 
     }
