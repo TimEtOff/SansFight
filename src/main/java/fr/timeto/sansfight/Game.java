@@ -19,7 +19,7 @@ import java.io.InputStream;
 import java.util.Objects;
 
 import static fr.timeto.sansfight.Heart.*;
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 public class Game extends JPanel implements KeyListener , SwingerEventListener {
 
@@ -75,7 +75,7 @@ public class Game extends JPanel implements KeyListener , SwingerEventListener {
         frame.setTitle("Sans Fight");
         frame.setSize(640, 480);
         frame.setResizable(false);
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setIconImage(Swinger.getResourceIgnorePath("/assets/sansfight/Files/icon-256.png"));
         frame.setContentPane(new Game(args));
@@ -105,25 +105,25 @@ public class Game extends JPanel implements KeyListener , SwingerEventListener {
         this.add(uiMercyButton);
         uiMercyButton.setVisible(false);
 
-        playerNameLabel.setBounds(82, 358, 130, 20);
-        playerNameLabel.setFont(bitOperatorFont.deriveFont(25f));
+        playerNameLabel.setBounds(82, 361, 140, 20);
+        playerNameLabel.setFont(determinationSansFont.deriveFont(22f));
         playerNameLabel.setForeground(Color.WHITE);
         playerNameLabel.setOpaque(false);
         this.add(playerNameLabel);
         playerNameLabel.setVisible(false);
 
-        levelLabel.setBounds(82, 358, 130, 20);
-        levelLabel.setFont(bitOperatorFont.deriveFont(25f));
+        levelLabel.setBounds(82, 361, 140, 20);
+        levelLabel.setFont(determinationSansFont.deriveFont(22f));
         levelLabel.setForeground(Color.WHITE);
         levelLabel.setOpaque(false);
         this.add(levelLabel);
         levelLabel.setVisible(false);
 
         cadre.setBounds(82, 227, 470, 130);
-        cadre.setBorder(new RectangleBorder(Color.WHITE, new Insets(5, 5, 5, 5), new Insets(10, 15, 10, 15)));
+        cadre.setBorder(new RectangleBorder(Color.WHITE, new Insets(5, 5, 5, 5), new Insets(15, 15, 15, 15)));
         cadre.setEditable(false);
         cadre.setForeground(Color.WHITE);
-        cadre.setFont(bitOperatorFont.deriveFont(23f));
+        cadre.setFont(determinationSansFont.deriveFont(20f));
         cadre.setOpaque(false);
         cadre.setText("*  Tu vas passer un sale quart d'heure..." + System.getProperty("line.separator") + "     Ou pas ?");
         this.add(cadre);
@@ -137,8 +137,8 @@ public class Game extends JPanel implements KeyListener , SwingerEventListener {
         this.add(deprecationBar);
         deprecationBar.setVisible(false);
 
-        lifeLabel.setBounds(330, 358, 130, 20);
-        lifeLabel.setFont(bitOperatorFont.deriveFont(25f));
+        lifeLabel.setBounds(330, 361, 130, 20);
+        lifeLabel.setFont(determinationSansFont.deriveFont(22f));
         lifeLabel.setForeground(Color.WHITE);
         lifeLabel.setOpaque(false);
         this.add(lifeLabel);
@@ -286,14 +286,20 @@ public class Game extends JPanel implements KeyListener , SwingerEventListener {
         return null;
     }
 
-    public static Font bitOperatorFont;
+    public static Font determinationSansFont;
+    public static Font determinationMonoFont;
+    public static Font hachicroFont;
     public static Font undertaleSansFont;
 
-    private static final String FONT_PATH_8BITOPERATOR = "assets/sansfight/Fonts/8bitoperator_jve.ttf";
+    private static final String FONT_PATH_DETERMINATIONSANS = "assets/sansfight/Fonts/DTM-Sans.ttf";
+    private static final String FONT_PATH_DETERMINATIONMONO = "assets/sansfight/Fonts/DTM-Mono.ttf";
+    private static final String FONT_PATH_HACHICRO = "assets/sansfight/Fonts/hachicro.TTF";
     private static final String FONT_PATH_UNDERTALESANS = "assets/sansfight/Fonts/UndertaleSans.ttf";
 
     public static void initFonts() {
-        bitOperatorFont = CustomFont(FONT_PATH_8BITOPERATOR);
+        determinationSansFont = CustomFont(FONT_PATH_DETERMINATIONSANS);
+        determinationMonoFont = CustomFont(FONT_PATH_DETERMINATIONMONO);
+        hachicroFont = CustomFont(FONT_PATH_HACHICRO);
         undertaleSansFont = CustomFont(FONT_PATH_UNDERTALESANS);
 
     }
