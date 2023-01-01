@@ -18,18 +18,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Objects;
 
+import static fr.timeto.sansfight.Heart.*;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class Game extends JPanel implements KeyListener , SwingerEventListener {
 
+    static JFrame frame;
+
     public static final String MENU_ARG = "-menu";
     public static final String FIGHT_ARG = "-fight";
-
-    public static String playerName;
-    public static int playerLevel;
-    public static int maximumHp;
-    public static int hp;
-    public static int deprecationHp;
 
     public static STexturedButton uiFightButton = new STexturedButton(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/UIFight/Default/000.png"), Swinger.getResourceIgnorePath("/assets/sansfight/Animations/UIFight/Highlight/000.png"), Swinger.getResourceIgnorePath("/assets/sansfight/Animations/UIFight/Default/000.png"));
     public static STexturedButton uiActButton = new STexturedButton(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/UIAct/Default/000.png"), Swinger.getResourceIgnorePath("/assets/sansfight/Animations/UIAct/Highlight/000.png"), Swinger.getResourceIgnorePath("/assets/sansfight/Animations/UIAct/Default/000.png"));
@@ -39,7 +36,7 @@ public class Game extends JPanel implements KeyListener , SwingerEventListener {
     public static JLabel levelLabel = new JLabel("", SwingConstants.RIGHT);
     public static JTextArea cadre = new JTextArea();
     public static SColoredBar deprecationBar = new SColoredBar(new Color(191, 0, 0), new Color(255, 0, 255));
-    public static SColoredBar lifeBar = new SColoredBar(Swinger.getTransparentWhite(100), new Color(255, 255, 0));
+    public static SColoredBar lifeBar = new SColoredBar(Swinger.getTransparentWhite(0), new Color(255, 255, 0));
     public static JLabel lifeLabel = new JLabel(hp + "/" + maximumHp, SwingConstants.RIGHT);
 
     public static JLabel sansBody = new JLabel(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansBody/HandUp/000.png")), SwingConstants.CENTER);
@@ -74,7 +71,7 @@ public class Game extends JPanel implements KeyListener , SwingerEventListener {
         hp = maximumHp;
         deprecationHp = hp;
 
-        JFrame frame = new JFrame();
+        frame = new JFrame();
         frame.setTitle("Sans Fight");
         frame.setSize(640, 480);
         frame.setResizable(false);
@@ -306,14 +303,16 @@ public class Game extends JPanel implements KeyListener , SwingerEventListener {
         if (e.getSource() == uiFightButton) {
             Thread t = new Thread(() -> {
                 Animations.sansBody(Animations.SANS_BODY.HAND_UP, false);
+                damage(5);
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                 } catch (InterruptedException ex) {
                     throw new RuntimeException(ex);
                 }
                 sansSweat.setVisible(true);
                 sansSweat.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansSweat/Sweat1/000.png")));
                 Animations.sansBody(Animations.SANS_BODY.HAND_DOWN, false);
+                damage(5);
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException ex) {
@@ -342,14 +341,16 @@ public class Game extends JPanel implements KeyListener , SwingerEventListener {
         } else if (e.getSource() == uiActButton) {
             Thread t = new Thread(() -> {
                 Animations.sansBody(Animations.SANS_BODY.HAND_RIGHT, false);
+                deprecationDamage(hp, 10);
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                 } catch (InterruptedException ex) {
                     throw new RuntimeException(ex);
                 }
                 Animations.sansBody(Animations.SANS_BODY.HAND_LEFT, false);
+                deprecationDamage(hp, 10);
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                 } catch (InterruptedException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -358,6 +359,8 @@ public class Game extends JPanel implements KeyListener , SwingerEventListener {
                 sansBody.setVisible(false);
             });
             t.start();
+        } else if (e.getSource() == uiItemsButton) {
+            heal(50, "Your mother");
         }
 
     }
