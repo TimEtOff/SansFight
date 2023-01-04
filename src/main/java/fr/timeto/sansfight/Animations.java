@@ -255,13 +255,13 @@ public class Animations {
                 while (sansHeadInAnimation) {
                     sansHead.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansHead/" + animationName + "/000.png")));
                     try {
-                        Thread.sleep(250);
+                        Thread.sleep(100);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
                     sansHead.setIcon(new ImageIcon(Swinger.getResourceIgnorePath("/assets/sansfight/Animations/SansHead/" + animationName + "/001.png")));
                     try {
-                        Thread.sleep(250);
+                        Thread.sleep(150);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
@@ -300,9 +300,26 @@ public class Animations {
             message2 = "";
             message3 = "";
         }
-        sansSpeechBubble.setVisible(true);
-        sansSpeechTextArea.setVisible(true);
-        sansSpeechTextArea.setText(message1 + System.getProperty("line.separator") + message2 + System.getProperty("line.separator") + message3);
+
+        String finalMessage = message1;
+        String finalMessage1 = message2;
+        String finalMessage2 = message3;
+        Thread t = new Thread(() -> {
+            sansSpeechBubble.setVisible(true);
+            sansSpeechTextArea.setVisible(true);
+            sansSpeechTextArea.setText(finalMessage + System.getProperty("line.separator") + finalMessage1 + System.getProperty("line.separator") + finalMessage2);
+
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            sansSpeechBubble.setVisible(false);
+            sansSpeechTextArea.setVisible(false);
+            sansSpeechTextArea.setText("");
+        });
+        t.start();
 
     }
 }
